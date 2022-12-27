@@ -817,3 +817,7 @@ In a few minutes, you can try to access your ingress.
 
 
 curl http://echo.devopsbyexample.io
+
+#(c) 
+# https://www.youtube.com/watch?v=kRKmcYC71J4&ab_channel=AntonPutra
+# https://antonputra.com/amazon/create-eks-cluster-using-terraform-modules/#deploy-aws-load-balancer-controller
