@@ -1,6 +1,3 @@
-provider "aws"{
-    region = "us-east-1"
-}
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.14.3"
@@ -8,9 +5,16 @@ module "vpc" {
   name = "main"
   cidr = "10.0.0.0/16"
 
-  azs             = ["us-east-1a", "us-east-1b"] 
-  private_subnets = ["10.0.0.0/19", "10.0.32.0/19"] #nodes are on NAT GW
+  azs             = ["us-east-1a", "us-east-1b"]
+  private_subnets = ["10.0.0.0/19", "10.0.32.0/19"]  #nodes are on NAT GW
   public_subnets  = ["10.0.64.0/19", "10.0.96.0/19"] # Public needs for applications to be exposed publicly
+
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = "1"
+  }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = "1"
+  }
 
   enable_nat_gateway     = true
   single_nat_gateway     = true
