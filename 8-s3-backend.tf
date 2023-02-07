@@ -14,7 +14,7 @@
 #}
 #
 ##create dynamodb
-#resource "aws_dynamodb_rable" "statelock" {
+#resource "aws_dynamodb_table" "statelock" {
 #    name = "state-lock"
 #    billing_mode = "PAY_PER_REQUEST"
 #    hash_key = "LockID"
